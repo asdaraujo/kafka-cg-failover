@@ -1,0 +1,23 @@
+kafka_services:
+  # LDAP + SSL
+  - alias: cluster_0
+    bootstrap_servers: kafka1.acme.com:9093
+    security_protocol: SASL_SSL
+    ldap_username: alice
+    ldap_password: Supersecret1!
+    tls_ca_cert: /home/alice/truststore.pem
+    client_configs:
+  # No authentication
+  - alias: cluster_1
+    bootstrap_servers: kafka1.acme.com:9092
+    security_protocol: PLAINTEXT
+    client_configs:
+  # Kerberos + SSL
+  - alias: cluster_2
+    bootstrap_servers: kafka1.acme.com:9093
+    security_protocol: SASL_SSL
+    kerberos_principal: alice@ACME.COM
+    kerberos_keytab: /home/alice/alice.keytab
+    krb5_conf: /home/alice/krb5.conf
+    tls_ca_cert: /home/alice/truststore.pem
+    client_configs:

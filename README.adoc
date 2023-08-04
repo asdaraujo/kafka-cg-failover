@@ -1,0 +1,10 @@
+= Consumer Group Failover
+
+Performs a timestamp-base failover of consumer groups across two Kafka clusters that have been configured for replication
+[source]
+----
+cluster_a                 cluster_b
+----------------          ----------------
+topic1             --->   cluster_a.topic1
+cluster_b.topic1   <---   topic1
+----

@@ -8,3 +8,19 @@ cluster_a                 cluster_b
 topic1             --->   cluster_a.topic1
 cluster_b.topic1   <---   topic1
 ----
+
+== Usage
+
+[source]
+----
+python cg-failover.py [options]
+
+Options:
+  -h, --help                       show this help message and exit
+  -c FILE, --config=FILE           Configuration file (YAML format)
+  -g REGEX, --groups-regex=REGEX   Regex matching the names of groups to translate
+  -s ALIAS, --source=ALIAS         Source cluster
+  -t ALIAS, --target=ALIAS         Target cluster
+  -n, --no-prefix                  Do not use topic prefixes
+  -d, --no-dry-run                 Commit offsets on target cluster
+----

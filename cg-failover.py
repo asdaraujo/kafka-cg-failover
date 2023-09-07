@@ -323,6 +323,8 @@ def validate_arguments(options):
             missing_arguments.append(cmd_option)
     if missing_arguments:
         raise RuntimeError(f'Missing arguments: {", ".join(missing_arguments)}')
+    if options.no_bugs:
+        raise RuntimeError('--no-bugs option not fully implemented yet!')
 
 
 if __name__ == '__main__':
@@ -339,6 +341,8 @@ if __name__ == '__main__':
                       help='Do not use topic prefixes')
     PARSER.add_option('-d', '--no-dry-run', dest='no_dry_run', action='store_true',
                       help='Commit offsets on target cluster')
+    PARSER.add_option('--no-bugs', dest='no_bugs', action='store_true',
+                      help='Run without bugs')
     (options, args) = PARSER.parse_args()
     validate_arguments(options)
 
